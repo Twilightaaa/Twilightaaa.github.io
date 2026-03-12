@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jiwei Tang | Academic Homepage</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #2980b9;
+      --text: #333;
+      --light: #666;
+      --bg: #fff;
+      --link: #1a5276;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 35px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .avatar svg { width: 80px; height: 80px; fill: white; opacity: 0.9; }
+
+    .header-info h1 {
+      font-size: 2.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .header-info .subtitle {
+      font-size: 1.15em;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .header-info .affiliation {
+      font-size: 0.95em;
+      color: var(--light);
+      margin-bottom: 14px;
+    }
+
+    .social-links { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.9em;
+      padding: 4px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .social-links svg { width: 16px; height: 16px; }
+
+    /* Sections */
+    .section { margin-bottom: 35px; }
+
+    .section h2 {
+      font-size: 1.5em;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .section p, .section ul { margin-bottom: 12px; }
+
+    .section ul { padding-left: 20px; }
+    .section li { margin-bottom: 4px; }
+
+    .keywords { font-size: 0.95em; color: var(--light); }
+
+    /* Publications */
+    .pub-item {
+      margin-bottom: 18px;
+      padding: 12px 14px;
+      border-left: 3px solid var(--accent);
+      background: #fafbfc;
+      border-radius: 0 6px 6px 0;
+    }
+
+    .pub-item .pub-title {
+      font-weight: 600;
+      font-size: 1.02em;
+      color: var(--primary);
+    }
+
+    .pub-item .pub-title sup {
+      color: #e74c3c;
+      font-weight: 700;
+      font-size: 0.8em;
+    }
+
+    .pub-item .pub-authors {
+      font-size: 0.93em;
+      color: var(--light);
+      margin: 3px 0;
+    }
+
+    .pub-item .pub-authors b { color: var(--text); }
+
+    .pub-item .pub-venue {
+      font-size: 0.9em;
+      color: var(--accent);
+      font-weight: 500;
+      margin: 3px 0;
+    }
+
+    .pub-item .pub-links { margin-top: 5px; }
+
+    .pub-item .pub-links a {
+      display: inline-block;
+      font-size: 0.85em;
+      color: var(--link);
+      text-decoration: none;
+      margin-right: 10px;
+      padding: 2px 8px;
+      border: 1px solid #d0d0d0;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .pub-item .pub-links a:hover { background: var(--accent); color: white; border-color: var(--accent); }
+
+    .pub-item .pub-links .highlight { background: #eaf2f8; color: var(--accent); border-color: var(--accent); }
+
+    .note { font-size: 0.85em; color: var(--light); font-style: italic; }
+
+    /* Experience */
+    .exp-item { margin-bottom: 16px; }
+
+    .exp-item h3 {
+      font-size: 1.05em;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .exp-item .exp-meta {
+      font-size: 0.9em;
+      color: var(--light);
+      margin-bottom: 6px;
+    }
+
+    .exp-item ul {
+      font-size: 0.93em;
+      padding-left: 18px;
+    }
+
+    .exp-item li { margin-bottom: 5px; }
+
+    /* Education */
+    .edu-item { margin-bottom: 14px; }
+
+    .edu-item h3 {
+      font-size: 1.05em;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .edu-item .edu-meta {
+      font-size: 0.9em;
+      color: var(--light);
+      margin-bottom: 4px;
+    }
+
+    .edu-item .edu-honors {
+      font-size: 0.88em;
+      color: #27ae60;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+      color: #aaa;
+      font-size: 0.85em;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header { flex-direction: column; text-align: center; }
+      .social-links { justify-content: center; }
+      .header-info h1 { font-size: 1.7em; }
+      body { padding: 20px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <div class="avatar">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+    </svg>
+  </div>
+  <div class="header-info">
+    <h1>Jiwei Tang (汤济玮)</h1>
+    <div class="subtitle">M.Eng. Student in Computer Technology</div>
+    <div class="affiliation">
+      <strong>Tsinghua University</strong> &nbsp;|&nbsp; Department of Computer Science and Technology
+    </div>
+    <div class="social-links">
+      <a href="mailto:tangjw24@mails.tsinghua.edu.cn" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email
+      </a>
+      <a href="https://github.com/Twilightaaa" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://scholar.google.com" target="_blank" title="Google Scholar">
+        <svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
+        Scholar
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- About -->
+<div class="section">
+  <h2>About Me</h2>
+  <p>
+    I am a Master's student in Computer Technology at <strong>Tsinghua University</strong>, advised by Prof. Wei Lv.
+    My research focuses on <strong>Natural Language Processing</strong>, <strong>Large Language Models</strong>, and <strong>Context Compression</strong>.
+    I am currently a Research Intern at <strong>Alibaba Group</strong>, working on foundation model training.
+  </p>
+  <p class="keywords">
+    <strong>Research Interests:</strong> NLP · Large Language Models · Context Compression · Text Compression · Information Retrieval
+  </p>
+</div>
+
+<!-- Education -->
+<div class="section">
+  <h2>Education</h2>
+  <div class="edu-item">
+    <h3>M.Eng., Computer Technology</h3>
+    <div class="edu-meta">Tsinghua University &nbsp;|&nbsp; 2024.09 – 2027.06 (Expected)</div>
+    <div class="edu-honors">🏆 School-level Second-class Scholarship</div>
+  </div>
+  <div class="edu-item">
+    <h3>B.Eng., Computer Science and Technology</h3>
+    <div class="edu-meta">Jinan University &nbsp;|&nbsp; 2020.09 – 2024.06 &nbsp;|&nbsp; <strong>Rank: 1 / 99</strong></div>
+    <div class="edu-honors">🏆 National Scholarship · Outstanding Graduate · Outstanding Thesis · Excellent Student × 2 · First-class Scholarship × 2</div>
+  </div>
+</div>
+
+<!-- Publications -->
+<div class="section">
+  <h2>Publications <span class="note">(* equal contribution)</span></h2>
+
+  <div class="pub-item">
+    <div class="pub-title">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</div>
+    <div class="pub-authors"><b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>ICLR 2026</strong> (Oral, Tsinghua-A, Score: 8 6 6 6, 247K+ views)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+      <a href="#">[Code]</a>
+      <a href="#">[Twitter]</a>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-title">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</div>
+    <div class="pub-authors"><b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>NAACL 2025 Findings</strong> (CCF-B)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+      <a href="#">[Code]</a>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-title">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</div>
+    <div class="pub-authors">Yuxin Zhao, <b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>AAAI 2026</strong> (CCF-A)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+      <a href="#">[Code]</a>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
+    <div class="pub-authors"><b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>ACL 2026 Under Review</strong> (CCF-A, OA: 3.50)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
+    <div class="pub-authors"><b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>ACL 2026 Under Review</strong> (CCF-A, OA: 3.33, 210K+ views)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+      <a href="#">[Code]</a>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-title">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Models</div>
+    <div class="pub-authors"><sup>*</sup>Zewei Lv, <sup>*</sup><b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>ICML 2026 Under Review</strong> (CCF-A)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-title">When Hard Negatives Hurt: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
+    <div class="pub-authors"><sup>*</sup>Qingquan Zhang, <sup>*</sup><b>Jiwei Tang</b>, et al.</div>
+    <div class="pub-venue"><strong>KDD 2026 Under Review</strong> (CCF-A)</div>
+    <div class="pub-links">
+      <a href="#" class="highlight">[Paper]</a>
+    </div>
+  </div>
+</div>
+
+<!-- Experience -->
+<div class="section">
+  <h2>Experience</h2>
+  <div class="exp-item">
+    <h3>Research Intern — Alibaba Group</h3>
+    <div class="exp-meta">Future Life Lab · Foundation Model Training · 2025.07 – Present</div>
+    <ul>
+      <li>Working on context compression for large language models at the base model team</li>
+      <li>Published first-author paper at ICLR 2026 (Oral, 247K+ views)</li>
+      <li>Three papers under review at ACL 2026, ICML 2026, KDD 2026</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Skills -->
+<div class="section">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Programming:</strong> Python, PyTorch, LaTeX, Linux, SSH</li>
+    <li><strong>Language:</strong> Chinese (Native), English (CET-6: 560)</li>
+  </ul>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p>Last updated: March 2026 &nbsp;|&nbsp; Built with ❤️</p>
+</div>
+
+</body>
+</html>

@@ -1,241 +1,755 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiwei Tang | Academic Homepage</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jiwei Tang | Homepage</title>
     <style>
+        :root {
+            --bg-deep: #140f1d;
+            --bg-deep-2: #1b1327;
+            --bg-soft: #f6f2fa;
+            --panel: rgba(255, 255, 255, 0.9);
+            --panel-solid: #ffffff;
+            --panel-dark: rgba(255, 255, 255, 0.08);
+            --text: #2b2235;
+            --text-soft: #5f546f;
+            --heading: #1b1323;
+            --text-light: #f7f2ff;
+            --muted-light: #d3c8e4;
+            --accent: #6f42c1;
+            --accent-2: #8155cf;
+            --accent-3: #a675df;
+            --accent-soft: #f3ebff;
+            --line: #eadff5;
+            --line-dark: rgba(255, 255, 255, 0.14);
+            --shadow-hero: 0 24px 60px rgba(20, 15, 29, 0.34);
+            --shadow-card: 0 12px 34px rgba(78, 46, 125, 0.08);
+            --shadow-nav: 0 8px 24px rgba(30, 18, 48, 0.14);
+            --radius-xl: 30px;
+            --radius-lg: 22px;
+            --radius-md: 16px;
+            --radius-sm: 12px;
+            --maxw: 1180px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 900px;
+            color: var(--text);
+            line-height: 1.75;
+            background:
+                radial-gradient(circle at 12% 8%, rgba(166,117,223,0.22), transparent 24%),
+                radial-gradient(circle at 85% 10%, rgba(111,66,193,0.20), transparent 24%),
+                linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep-2) 36%, var(--bg-soft) 36%, var(--bg-soft) 100%);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--accent);
+            transition: all 0.25s ease;
+        }
+
+        a:hover {
+            color: var(--accent-2);
+        }
+
+        .wrapper {
+            max-width: var(--maxw);
             margin: 0 auto;
-            padding: 40px 20px;
-            background-color: #f9f9f9;
+            padding: 20px 20px 60px;
         }
-        .container {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+
+        .nav {
+            position: sticky;
+            top: 16px;
+            z-index: 1000;
+            margin-bottom: 22px;
         }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #2c3e50;
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 20px;
+            border-radius: 18px;
+            background: rgba(29, 20, 40, 0.72);
+            border: 1px solid rgba(255,255,255,0.10);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: var(--shadow-nav);
         }
-        h2 {
-            font-size: 1.5em;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 40px;
-            color: #2c3e50;
+
+        .brand {
+            color: #fff;
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            white-space: nowrap;
         }
-        h3 {
-            font-size: 1.2em;
-            margin-top: 20px;
-            color: #34495e;
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        .subtitle {
-            font-size: 1.2em;
-            color: #666;
-            margin-bottom: 20px;
+
+        .nav-links a {
+            color: #efe7fb;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 999px;
         }
-        .contact-links a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #3498db;
-            font-weight: 500;
-        }
-        .contact-links a:hover {
-            text-decoration: underline;
-        }
-        .paper-item {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .paper-title {
-            font-weight: bold;
-            font-size: 1.1em;
-            color: #2c3e50;
-        }
-        .paper-venue {
-            font-style: italic;
-            color: #666;
-        }
-        .paper-links a {
-            font-size: 0.9em;
-            margin-right: 10px;
-            text-decoration: none;
-            color: #3498db;
-            border: 1px solid #3498db;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-        .paper-links a:hover {
-            background-color: #3498db;
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.10);
             color: #fff;
         }
-        .job-item {
-            margin-bottom: 20px;
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+            background: linear-gradient(135deg, rgba(29, 20, 40, 0.95), rgba(79, 45, 126, 0.90));
+            border: 1px solid var(--line-dark);
+            box-shadow: var(--shadow-hero);
+            padding: 48px;
+            color: var(--text-light);
         }
-        .job-header {
-            font-weight: bold;
-            font-size: 1.1em;
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 460px;
+            height: 460px;
+            top: -160px;
+            right: -80px;
+            background: radial-gradient(circle, rgba(166,117,223,0.30), transparent 68%);
+            pointer-events: none;
         }
-        .job-details {
-            color: #666;
-            margin-bottom: 5px;
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            left: -50px;
+            bottom: -120px;
+            background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 70%);
+            pointer-events: none;
         }
+
+        .hero-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.4fr 240px;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 13px;
+            margin-bottom: 18px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #eee4ff;
+            font-size: 0.84rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.6rem, 4.8vw, 4.2rem);
+            line-height: 1.06;
+            letter-spacing: -0.03em;
+            font-weight: 850;
+        }
+
+        .subtitle {
+            margin-top: 14px;
+            color: var(--muted-light);
+            font-size: 1.08rem;
+            max-width: 760px;
+        }
+
+        .hero-meta {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .hero-meta .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #f5efff;
+            font-size: 0.93rem;
+            font-weight: 600;
+        }
+
+        .contact-links {
+            margin-top: 22px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 16px;
+            border-radius: 999px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.94rem;
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.14);
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-2px);
+            background: rgba(255,255,255,0.16);
+            color: #fff;
+        }
+
+        .avatar-wrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        .avatar {
+            width: 210px;
+            height: 210px;
+            border-radius: 26px;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.08));
+            border: 1px solid rgba(255,255,255,0.18);
+            box-shadow: 0 14px 34px rgba(18, 12, 28, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .avatar-placeholder {
+            color: #efe6ff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .overview {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .overview-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 18px;
+            padding: 16px 18px;
+        }
+
+        .overview-label {
+            color: var(--muted-light);
+            font-size: 0.87rem;
+            margin-bottom: 6px;
+        }
+
+        .overview-value {
+            color: #fff;
+            font-size: 1.02rem;
+            font-weight: 800;
+            line-height: 1.45;
+        }
+
+        .content {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: 0.92fr 1.68fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        .left-col,
+        .right-col {
+            display: grid;
+            gap: 22px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid rgba(255,255,255,0.72);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 26px;
+        }
+
+        .section-title {
+            margin: 0 0 16px;
+            font-size: 1.28rem;
+            color: var(--heading);
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: "";
+            width: 6px;
+            height: 24px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-3));
+        }
+
+        .section-note {
+            color: var(--text-soft);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        p {
+            margin: 0 0 12px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 13px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #f8f1ff, #f1e8fd);
+            color: var(--accent);
+            border: 1px solid #e7daf8;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .item {
+            padding: 16px 0;
+            border-top: 1px solid var(--line);
+        }
+
+        .item:first-child {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .item-title {
+            font-size: 1.05rem;
+            font-weight: 760;
+            color: var(--heading);
+            margin-bottom: 4px;
+        }
+
+        .item-meta {
+            color: var(--text-soft);
+            margin-bottom: 6px;
+            font-size: 0.96rem;
+        }
+
+        .publication-list {
+            display: grid;
+            gap: 16px;
+        }
+
+        .paper-item {
+            background: linear-gradient(180deg, #ffffff 0%, #fdfaff 100%);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px 18px;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .paper-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(111, 66, 193, 0.10);
+            border-color: #dbc7f3;
+        }
+
+        .paper-title {
+            font-size: 1.05rem;
+            font-weight: 780;
+            color: var(--heading);
+            margin-bottom: 4px;
+            line-height: 1.5;
+        }
+
+        .paper-authors {
+            margin-bottom: 3px;
+        }
+
+        .paper-venue {
+            color: var(--text-soft);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .paper-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .paper-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            border: 1px solid #e7daf7;
+            background: #f9f5ff;
+            color: var(--accent);
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .paper-links a:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
         ul {
+            margin: 8px 0 0;
             padding-left: 20px;
         }
+
         li {
             margin-bottom: 5px;
         }
-        .highlight {
-            color: #e74c3c;
-            font-weight: bold;
+
+        .skill-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .skill-box {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 14px 15px;
+        }
+
+        footer {
+            margin-top: 28px;
+            padding-top: 6px;
+            text-align: center;
+            color: #8d7ea5;
+            font-size: 0.92rem;
+        }
+
+        /* --- 新增样式：红色加粗高亮 --- */
+        .highlight-red {
+            color: #d93025; /* 醒目的红色 */
+            font-weight: 800; /* 加粗 */
+            font-style: normal; /* 确保即使父级是斜体，它也是正体（可选） */
+        }
+        /* -------------------------------- */
+
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .avatar-wrap {
+                justify-content: flex-start;
+            }
+
+            .overview {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 14px 14px 44px;
+            }
+
+            .nav-inner {
+                padding: 12px 14px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .hero {
+                padding: 30px 22px;
+            }
+
+            .card {
+                padding: 20px 18px;
+            }
+
+            .hero h1 {
+                font-size: 2.35rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .avatar {
+                width: 170px;
+                height: 170px;
+                border-radius: 22px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Jiwei Tang (汤济玮)</h1>
-            <div class="subtitle">
-                M.Eng. Student in Computer Science and Technology, Tsinghua University
+    <div class="wrapper">
+        <nav class="nav">
+            <div class="nav-inner">
+                <div class="brand">Jiwei Tang</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#education">Education</a>
+                    <a href="#skills">Skills</a>
+                </div>
             </div>
-            <div class="contact-links">
-                <a href="mailto:tangjw24@mails.tsinghua.edu.cn">Email</a>
-                <a href="https://github.com/Twilightaaa" target="_blank">GitHub</a>
-                <a href="https://scholar.google.com/citations?user=v7oMH04AAAAJ&hl=zh-CN" target="_blank">Scholar</a>
+        </nav>
+
+        <header class="hero">
+            <div class="hero-grid">
+                <div>
+                    <!--<div class="hero-badge">Jiwei Tang</div>-->
+                    <h1>Jiwei Tang (汤济玮)</h1>
+                    <div class="subtitle">
+                        M.Eng. Student in Computer Science and Technology, Tsinghua University
+                    </div>
+
+                    <!--<div class="hero-meta">-->
+                    <!--    <div class="meta-pill">Natural Language Processing</div>-->
+                    <!--    <div class="meta-pill">Large Language Models</div>-->
+                    <!--    <div class="meta-pill">Context Compression</div>-->
+                    <!--</div>-->
+
+                    <div class="contact-links">
+                        <a href="mailto:tangjw24@mails.tsinghua.edu.cn">Email</a>
+                        <a href="https://github.com/Twilightaaa  " target="_blank">GitHub</a>
+                        <a href="https://scholar.google.com/citations?user=v7oMH04AAAAJ&hl=zh-CN  " target="_blank">Scholar</a>
+                    </div>
+                </div>
+
+                <div class="avatar-wrap">
+                    <div class="avatar">
+                        <!-- 将 avatar.jpg 替换为你的头像路径 -->
+                        <!-- 如果暂时没有头像，可以保留下面这一行占位 -->
+                        <!-- <div class="avatar-placeholder">Your Photo</div> -->
+                        <img src="photo.png" alt="Jiwei Tang" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <div class="avatar-placeholder" style="display:none;">Your Photo</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overview">
+                <div class="overview-card">
+                    <div class="overview-label">Current Role</div>
+                    <div class="overview-value">Research Intern at Alibaba Group</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Advisor</div>
+                    <div class="overview-value">Prof. Hai-Tao Zheng</div>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-label">Selected Highlight</div>
+                    <div class="overview-value">Total paper views 460 K+</div>
+                </div>
             </div>
         </header>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <p>
-                I am a Master's student in Computer Science and Technology at Tsinghua University, advised by <strong>Prof. Hai-Tao Zheng</strong>.
-                My research focuses on Natural Language Processing, Large Language Models, and Context Compression.
-                I am currently a Research Intern at Future Living Lab of Alibaba Group (foundation model team), working on efficient large language models.
-            </p>
-            <p>
-                <strong>Research Interests:</strong> Natural Language Processing · Large Language Models · Context Compression
-            </p>
-        </section>
+        <main class="content">
+            <div class="left-col">
+                <section class="card" id="about">
+                    <h2 class="section-title">About Me</h2>
+                    <p>
+                        I am a Master's student in Computer Science and Technology at Tsinghua University, advised by Prof. Hai-Tao Zheng.
+                        My research focuses on Natural Language Processing, Large Language Models, and Context Compression.
+                        I am currently a Research Intern at <strong>Future Living Lab of Alibaba Group</strong> (foundation model team), working on efficient large language models.
+                    </p>
+                    <p>
+                        <strong>Research Interests:</strong> Natural Language Processing · Large Language Models · Context Compression
+                    </p>
+                    <!--<div class="chips">-->
+                    <!--    <span class="chip">Natural Language Processing</span>-->
+                    <!--    <span class="chip">Large Language Models</span>-->
+                    <!--    <span class="chip">Context Compression</span>-->
+                    <!--</div>-->
+                </section>
 
-        <section id="education">
-            <h2>Education</h2>
-            <div class="job-item">
-                <div class="job-header">M.Eng., Computer Technology</div>
-                <div class="job-details">Tsinghua University | 2024.09 – 2027.06 (Expected)</div>
-                <div>🏆 Department-level Second-class Scholarship</div>
-            </div>
-            <div class="job-item">
-                <div class="job-header">B.Eng., Computer Science and Technology</div>
-                <div class="job-details">Jinan University | 2020.09 – 2024.06 | Rank: 1 / 99</div>
-                <div>🏆 National Scholarship · Outstanding Graduate · Outstanding Thesis · Excellent Student × 2 · First-class Scholarship × 2</div>
-            </div>
-        </section>
+                <section class="card" id="education">
+                    <h2 class="section-title">Education</h2>
 
-        <section id="publications">
-            <h2>Publications <span style="font-size:0.8em; font-weight:normal;">(* equal contribution)</span></h2>
-            
-            <div class="paper-item">
-                <div class="paper-title">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</div>
-                <div>Jiwei Tang, et al.</div>
-                <div class="paper-venue">ICLR 2026 (CCF-A, Score: 8 6 6 6, 247K+ views)</div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2602.01719">Paper</a>
-                    <a href="https://github.com/Twilightaaa/COMI">Code</a>
-                    <a href="https://x.com/FutureLab2025/status/2027214211403940199">Twitter</a>
-                </div>
-            </div>
+                    <div class="item">
+                        <div class="item-title">M.Eng., Computer Technology</div>
+                        <div class="item-meta">Tsinghua University | 2024.09 – 2027.06 (Expected)</div>
+                        <div>🏆 Department-level Second-class Scholarship</div>
+                    </div>
 
-            <div class="paper-item">
-                <div class="paper-title">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</div>
-                <div>Jiwei Tang, et al.</div>
-                <div class="paper-venue">NAACL 2025 Findings (CCF-B)</div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2409.19272">Paper</a>
-                    <a href="https://github.com/Twilightaaa/PerceptionCompressor">Code</a>
-                </div>
-            </div>
+                    <div class="item">
+                        <div class="item-title">B.Eng., Computer Science and Technology</div>
+                        <div class="item-meta">Jinan University | 2020.09 – 2024.06 | Rank: 1 / 99</div>
+                        <div>🏆 National Scholarship · Outstanding Graduate · Outstanding Thesis · Excellent Student × 2 · First-class Scholarship × 2</div>
+                    </div>
+                </section>
 
-            <div class="paper-item">
-                <div class="paper-title">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</div>
-                <div>Yuxin Zhao, Jiwei Tang, et al.</div>
-                <div class="paper-venue">AAAI 2026 (CCF-A)</div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2511.12913">Paper</a>
-                </div>
-            </div>
+                <section class="card" id="experience">
+                    <h2 class="section-title">Experience</h2>
 
-            <div class="paper-item">
-                <div class="paper-title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
-                <div>Jiwei Tang, et al.</div>
-                <div class="paper-venue">ACL 2026 Under Review (CCF-A, Meta Review 3.50, OA: 3.50)</div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2505.12215">Paper</a>
-                    <a href="https://github.com/Twilightaaa/GMSA">Code</a>
-                </div>
+                    <div class="item">
+                        <div class="item-title">Research Intern — Alibaba Group</div>
+                        <div class="item-meta">Future Living Lab · Foundation Model Team · 2025.07 – Present</div>
+                        <ul>
+                            <li>Working on context compression for large language models at the foundation model team</li>
+                            <li>Published first-author paper at ICLR 2026 (247K+ views)</li>
+                            <li>Two papers under review (1 at ACL 2026 (217K+ views), 1 at ICML 2026)</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="card" id="skills">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skill-list">
+                        <div class="skill-box"><strong>Programming:</strong> Python, PyTorch, LaTeX, Linux, SSH</div>
+                        <div class="skill-box"><strong>Language:</strong> Chinese (Native), English (CET-6: 560)</div>
+                    </div>
+                </section>
             </div>
 
-            <div class="paper-item">
-                <div class="paper-title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
-                <div>Jiwei Tang, et al.</div>
-                <div class="paper-venue">ACL 2026 Under Review (CCF-A, OA: 3.33, 217K+ views)</div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2602.01840">Paper</a>
-                    <a href="https://github.com/Twilightaaa/RAM">Code</a>
-                    <a href="https://x.com/FutureLab2025/status/2028392997726060927">Twitter</a>
-                </div>
+            <div class="right-col">
+                <section class="card" id="publications">
+                    <h2 class="section-title">Publications <span class="section-note">(* denotes equal contribution)</span></h2>
+
+                    <div class="publication-list">
+                        <div class="paper-item">
+                            <div class="paper-title">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</div>
+                            <div class="paper-authors">Jiwei Tang, et al.</div>
+                            <!-- 修改处 1 -->
+                            <div class="paper-venue">ICLR 2026 (<span class="highlight-red">CCF-A</span>, Score: 8 6 6 6, <span class="highlight-red">247K+ views</span>)</div>
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/abs/2602.01719  ">Paper</a>
+                                <a href="https://github.com/Twilightaaa/COMI  ">Code</a>
+                                <a href="https://x.com/FutureLab2025/status/2027214211403940199  ">Twitter</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-item">
+                            <div class="paper-title">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</div>
+                            <div class="paper-authors">Jiwei Tang, et al.</div>
+                            <!-- 修改处 2 -->
+                            <div class="paper-venue">NAACL 2025 Findings (<span class="highlight-red">CCF-B</span>)</div>
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/abs/2409.19272  ">Paper</a>
+                                <a href="https://github.com/Twilightaaa/PerceptionCompressor  ">Code</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-item">
+                            <div class="paper-title">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</div>
+                            <div class="paper-authors">Yuxin Zhao, Jiwei Tang, et al.</div>
+                            <!-- 修改处 3 -->
+                            <div class="paper-venue">AAAI 2026 (<span class="highlight-red">CCF-A</span>)</div>
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/abs/2511.12913  ">Paper</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-item">
+                            <div class="paper-title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
+                            <div class="paper-authors">Jiwei Tang, et al.</div>
+                            <!-- 修改处 4 -->
+                            <div class="paper-venue">ACL 2026 Under Review (<span class="highlight-red">CCF-A</span>, Meta Review 3.50, OA: 3.50)</div>
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/abs/2505.12215  ">Paper</a>
+                                <a href="https://github.com/Twilightaaa/GMSA  ">Code</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-item">
+                            <div class="paper-title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
+                            <div class="paper-authors">Jiwei Tang, et al.</div>
+                            <!-- 修改处 5 -->
+                            <div class="paper-venue">ACL 2026 Under Review (<span class="highlight-red">CCF-A</span>, Meta Review 3.50, OA: 3.33, <span class="highlight-red">217K+ views</span>)</div>
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/abs/2602.01840  ">Paper</a>
+                                <a href="https://github.com/Twilightaaa/RAM  ">Code</a>
+                                <a href="https://x.com/FutureLab2025/status/2028392997726060927  ">Twitter</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-item">
+                            <div class="paper-title">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Models</div>
+                            <div class="paper-authors">Kangtao Lv*, Jiwei Tang*, et al.</div>
+                            <!-- 修改处 6 -->
+                            <div class="paper-venue">ICML 2026 Under Review (<span class="highlight-red">CCF-A</span>)</div>
+                            <div class="paper-links">
+                                <a href="https://arxiv.org/abs/2602.01778  ">Paper</a>
+                            </div>
+                        </div>
+
+                        <div class="paper-item">
+                            <div class="paper-title">When Hard Negatives Hurt: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
+                            <div class="paper-authors">Zhicheng Zhang*, Jiwei Tang*, et al.</div>
+                            <!-- 修改处 7 -->
+                            <div class="paper-venue">KDD 2026 Under Review (<span class="highlight-red">CCF-A</span>)</div>
+                            <div class="paper-links">
+                                <a href="#">Paper</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
+        </main>
 
-            <div class="paper-item">
-                <div class="paper-title">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Models</div>
-                <div>Kangtao Lv*, Jiwei Tang*, et al.</div>
-                <div class="paper-venue">ICML 2026 Under Review (CCF-A)</div>
-                <div class="paper-links">
-                    <a href="https://arxiv.org/abs/2602.01778">Paper</a>
-                </div>
-            </div>
-
-            <div class="paper-item">
-                <div class="paper-title">When Hard Negatives Hurt: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
-                <div>Zhicheng Zhang*, Jiwei Tang*, et al.</div>
-                <div class="paper-venue">KDD 2026 Under Review (CCF-A)</div>
-                <div class="paper-links">
-                    <a href="#">Paper</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="job-item">
-                <div class="job-header">Research Intern — Alibaba Group</div>
-                <div class="job-details">Future Living Lab · Foundation Model Team · 2025.07 – Present</div>
-                <ul>
-                    <li>Working on context compression for large language models at the foundation model team</li>
-                    <li>Published first-author paper at ICLR 2026 (247K+ views)</li>
-                    <li>Two papers under review (1 at ACL 2026 (217K+ views), 1 at ICML 2026)</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Skills</h2>
-            <ul>
-                <li><strong>Programming:</strong> Python, PyTorch, LaTeX, Linux, SSH</li>
-                <li><strong>Language:</strong> Chinese (Native), English (CET-6: 560)</li>
-            </ul>
-        </section>
-
-        <footer style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 20px; color: #999; font-size: 0.9em;">
+        <footer>
             Last updated: March 2026 | Built with Jiwei Tang
         </footer>
     </div>

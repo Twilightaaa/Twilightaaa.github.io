@@ -158,22 +158,6 @@
             align-items: center;
         }
 
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 13px;
-            margin-bottom: 18px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-            color: #eee4ff;
-            font-size: 0.84rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-
         .hero h1 {
             margin: 0;
             font-size: clamp(2.6rem, 4.8vw, 4.2rem);
@@ -187,25 +171,6 @@
             color: var(--muted-light);
             font-size: 1.08rem;
             max-width: 760px;
-        }
-
-        .hero-meta {
-            margin-top: 22px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .hero-meta .meta-pill {
-            display: inline-flex;
-            align-items: center;
-            padding: 9px 14px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.09);
-            border: 1px solid rgba(255,255,255,0.12);
-            color: #f5efff;
-            font-size: 0.93rem;
-            font-weight: 600;
         }
 
         .contact-links {
@@ -348,25 +313,6 @@
             margin: 0 0 12px;
         }
 
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 14px;
-        }
-
-        .chip {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 13px;
-            border-radius: 999px;
-            background: linear-gradient(135deg, #f8f1ff, #f1e8fd);
-            color: var(--accent);
-            border: 1px solid #e7daf8;
-            font-size: 0.9rem;
-            font-weight: 700;
-        }
-
         .item {
             padding: 16px 0;
             border-top: 1px solid var(--line);
@@ -452,6 +398,59 @@
             color: #fff;
         }
 
+        .paper-note {
+            margin-top: 10px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            background: #f6efff;
+            border: 1px solid #e5d5fb;
+            color: #5a3c93;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .resume-box {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: #fff;
+            font-weight: 700;
+            border: 1px solid transparent;
+        }
+
+        .resume-btn:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(111, 66, 193, 0.18);
+        }
+
+        .recognition-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .recognition-item {
+            background: var(--panel-solid);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 14px 15px;
+        }
+
+        .recognition-item strong {
+            color: var(--heading);
+        }
+
         ul {
             margin: 8px 0 0;
             padding-left: 20px;
@@ -481,13 +480,11 @@
             font-size: 0.92rem;
         }
 
-        /* --- 新增样式：红色加粗高亮 --- */
         .highlight-red {
-            color: #d93025; /* 醒目的红色 */
-            font-weight: 800; /* 加粗 */
-            font-style: normal; /* 确保即使父级是斜体，它也是正体（可选） */
+            color: #d93025;
+            font-weight: 800;
+            font-style: normal;
         }
-        /* -------------------------------- */
 
         @media (max-width: 1024px) {
             .hero-grid {
@@ -552,6 +549,7 @@
                     <a href="#publications">Publications</a>
                     <a href="#experience">Experience</a>
                     <a href="#education">Education</a>
+                    <a href="#resume">Resume</a>
                     <a href="#skills">Skills</a>
                 </div>
             </div>
@@ -560,30 +558,21 @@
         <header class="hero">
             <div class="hero-grid">
                 <div>
-                    <!--<div class="hero-badge">Jiwei Tang</div>-->
                     <h1>Jiwei Tang (汤济玮)</h1>
                     <div class="subtitle">
                         M.Eng. Student in Computer Science and Technology, Tsinghua University
                     </div>
 
-                    <!--<div class="hero-meta">-->
-                    <!--    <div class="meta-pill">Natural Language Processing</div>-->
-                    <!--    <div class="meta-pill">Large Language Models</div>-->
-                    <!--    <div class="meta-pill">Context Compression</div>-->
-                    <!--</div>-->
-
                     <div class="contact-links">
                         <a href="mailto:tangjw24@mails.tsinghua.edu.cn">Email</a>
-                        <a href="https://github.com/Twilightaaa  " target="_blank">GitHub</a>
-                        <a href="https://scholar.google.com/citations?user=v7oMH04AAAAJ&hl=zh-CN  " target="_blank">Scholar</a>
+                        <a href="https://github.com/Twilightaaa" target="_blank">GitHub</a>
+                        <a href="https://scholar.google.com/citations?user=v7oMH04AAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
+                        <a href="cv.pdf" target="_blank">Curriculum Vitae</a>
                     </div>
                 </div>
 
                 <div class="avatar-wrap">
                     <div class="avatar">
-                        <!-- 将 avatar.jpg 替换为你的头像路径 -->
-                        <!-- 如果暂时没有头像，可以保留下面这一行占位 -->
-                        <!-- <div class="avatar-placeholder">Your Photo</div> -->
                         <img src="photo.png" alt="Jiwei Tang" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                         <div class="avatar-placeholder" style="display:none;">Your Photo</div>
                     </div>
@@ -618,25 +607,28 @@
                     <p>
                         <strong>Research Interests:</strong> Natural Language Processing · Large Language Models · Context Compression
                     </p>
-                    <!--<div class="chips">-->
-                    <!--    <span class="chip">Natural Language Processing</span>-->
-                    <!--    <span class="chip">Large Language Models</span>-->
-                    <!--    <span class="chip">Context Compression</span>-->
-                    <!--</div>-->
+                </section>
+
+                <section class="card" id="resume">
+                    <h2 class="section-title">Curriculum Vitae</h2>
+                    <div class="resume-box">
+                        <p>You can view my latest CV here:</p>
+                        <a class="resume-btn" href="cv.pdf" target="_blank">View Resume</a>
+                    </div>
                 </section>
 
                 <section class="card" id="education">
                     <h2 class="section-title">Education</h2>
 
                     <div class="item">
-                        <div class="item-title">M.Eng., Computer Technology</div>
+                        <div class="item-title">M.Eng., Computer Science and Technology</div>
                         <div class="item-meta">Tsinghua University | 2024.09 – 2027.06 (Expected)</div>
                         <div>🏆 Department-level Second-class Scholarship</div>
                     </div>
 
                     <div class="item">
                         <div class="item-title">B.Eng., Computer Science and Technology</div>
-                        <div class="item-meta">Jinan University | 2020.09 – 2024.06 | Rank: 1 / 99</div>
+                        <div class="item-meta">Jinan University | 2020.09 – 2024.06 | Rank: <strong>1</strong> / 99</div>
                         <div>🏆 National Scholarship · Outstanding Graduate · Outstanding Thesis · Excellent Student × 2 · First-class Scholarship × 2</div>
                     </div>
                 </section>
@@ -666,79 +658,96 @@
 
             <div class="right-col">
                 <section class="card" id="publications">
-                    <h2 class="section-title">Publications <span class="section-note">(* denotes equal contribution)</span></h2>
+                    <h2 class="section-title">Main Publications <span class="section-note">(* denotes equal contribution)</span></h2>
 
                     <div class="publication-list">
                         <div class="paper-item">
                             <div class="paper-title">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</div>
                             <div class="paper-authors">Jiwei Tang, et al.</div>
-                            <!-- 修改处 1 -->
                             <div class="paper-venue">ICLR 2026 (<span class="highlight-red">CCF-A</span>, Score: 8 6 6 6, <span class="highlight-red">247K+ views</span>)</div>
                             <div class="paper-links">
-                                <a href="https://arxiv.org/abs/2602.01719  ">Paper</a>
-                                <a href="https://github.com/Twilightaaa/COMI  ">Code</a>
-                                <a href="https://x.com/FutureLab2025/status/2027214211403940199  ">Twitter</a>
+                                <a href="https://arxiv.org/abs/2602.01719" target="_blank">Paper</a>
+                                <a href="https://github.com/Twilightaaa/COMI" target="_blank">Code</a>
+                                <a href="https://x.com/FutureLab2025/status/2027214211403940199" target="_blank">Twitter</a>
+                            </div>
+                            <div class="paper-note">
+                                Featured in the <span class="highlight-red">300+ stars</span> GitHub repository
+                                <a href="https://github.com/ZLKong/Awesome-Collection-Token-Reduction" target="_blank">
+                                    Awesome-Collection-Token-Reduction
+                                </a>.
                             </div>
                         </div>
 
                         <div class="paper-item">
                             <div class="paper-title">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</div>
                             <div class="paper-authors">Jiwei Tang, et al.</div>
-                            <!-- 修改处 2 -->
                             <div class="paper-venue">NAACL 2025 Findings (<span class="highlight-red">CCF-B</span>)</div>
                             <div class="paper-links">
-                                <a href="https://arxiv.org/abs/2409.19272  ">Paper</a>
-                                <a href="https://github.com/Twilightaaa/PerceptionCompressor  ">Code</a>
+                                <a href="https://arxiv.org/abs/2409.19272" target="_blank">Paper</a>
+                                <a href="https://github.com/Twilightaaa/PerceptionCompressor" target="_blank">Code</a>
+                            </div>
+                            <div class="paper-note">
+                                Featured in the <span class="highlight-red">300+ stars</span> GitHub repository
+                                <a href="https://github.com/ZLKong/Awesome-Collection-Token-Reduction" target="_blank">
+                                    Awesome-Collection-Token-Reduction
+                                </a>.
                             </div>
                         </div>
 
                         <div class="paper-item">
                             <div class="paper-title">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</div>
                             <div class="paper-authors">Yuxin Zhao, Jiwei Tang, et al.</div>
-                            <!-- 修改处 3 -->
                             <div class="paper-venue">AAAI 2026 (<span class="highlight-red">CCF-A</span>)</div>
                             <div class="paper-links">
-                                <a href="https://arxiv.org/abs/2511.12913  ">Paper</a>
+                                <a href="https://arxiv.org/abs/2511.12913" target="_blank">Paper</a>
                             </div>
                         </div>
 
                         <div class="paper-item">
                             <div class="paper-title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
                             <div class="paper-authors">Jiwei Tang, et al.</div>
-                            <!-- 修改处 4 -->
                             <div class="paper-venue">ACL 2026 Under Review (<span class="highlight-red">CCF-A</span>, Meta Review 3.50, OA: 3.50)</div>
                             <div class="paper-links">
-                                <a href="https://arxiv.org/abs/2505.12215  ">Paper</a>
-                                <a href="https://github.com/Twilightaaa/GMSA  ">Code</a>
+                                <a href="https://arxiv.org/abs/2505.12215" target="_blank">Paper</a>
+                                <a href="https://github.com/Twilightaaa/GMSA" target="_blank">Code</a>
+                            </div>
+                            <div class="paper-note">
+                                Featured in the <span class="highlight-red">300+ stars</span> GitHub repository
+                                <a href="https://github.com/ZLKong/Awesome-Collection-Token-Reduction" target="_blank">
+                                    Awesome-Collection-Token-Reduction
+                                </a>.
                             </div>
                         </div>
 
                         <div class="paper-item">
                             <div class="paper-title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
                             <div class="paper-authors">Jiwei Tang, et al.</div>
-                            <!-- 修改处 5 -->
                             <div class="paper-venue">ACL 2026 Under Review (<span class="highlight-red">CCF-A</span>, Meta Review 3.50, OA: 3.33, <span class="highlight-red">217K+ views</span>)</div>
                             <div class="paper-links">
-                                <a href="https://arxiv.org/abs/2602.01840  ">Paper</a>
-                                <a href="https://github.com/Twilightaaa/RAM  ">Code</a>
-                                <a href="https://x.com/FutureLab2025/status/2028392997726060927  ">Twitter</a>
+                                <a href="https://arxiv.org/abs/2602.01840" target="_blank">Paper</a>
+                                <a href="https://github.com/Twilightaaa/RAM" target="_blank">Code</a>
+                                <a href="https://x.com/FutureLab2025/status/2028392997726060927" target="_blank">Twitter</a>
+                            </div>
+                            <div class="paper-note">
+                                Featured in the <span class="highlight-red">300+ stars</span> GitHub repository
+                                <a href="https://github.com/ZLKong/Awesome-Collection-Token-Reduction" target="_blank">
+                                    Awesome-Collection-Token-Reduction
+                                </a>.
                             </div>
                         </div>
 
                         <div class="paper-item">
                             <div class="paper-title">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Models</div>
                             <div class="paper-authors">Kangtao Lv*, Jiwei Tang*, et al.</div>
-                            <!-- 修改处 6 -->
                             <div class="paper-venue">ICML 2026 Under Review (<span class="highlight-red">CCF-A</span>)</div>
                             <div class="paper-links">
-                                <a href="https://arxiv.org/abs/2602.01778  ">Paper</a>
+                                <a href="https://arxiv.org/abs/2602.01778" target="_blank">Paper</a>
                             </div>
                         </div>
 
                         <div class="paper-item">
                             <div class="paper-title">When Hard Negatives Hurt: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
                             <div class="paper-authors">Zhicheng Zhang*, Jiwei Tang*, et al.</div>
-                            <!-- 修改处 7 -->
                             <div class="paper-venue">KDD 2026 Under Review (<span class="highlight-red">CCF-A</span>)</div>
                             <div class="paper-links">
                                 <a href="#">Paper</a>

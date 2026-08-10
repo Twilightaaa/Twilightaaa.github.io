@@ -19,7 +19,7 @@
       color: var(--text);
       background: #fff;
       line-height: 1.75;
-      max-width: 900px;
+      max-width: 920px;
       margin: 0 auto;
       padding: 48px 28px 64px;
       font-size: 17px;
@@ -29,7 +29,13 @@
     a:hover { text-decoration: underline; }
 
     /* Header */
-    .header { margin-bottom: 42px; }
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 42px;
+    }
 
     .header h1 {
       font-size: 2em;
@@ -52,6 +58,14 @@
 
     .contact { font-size: 0.95em; color: var(--muted); }
     .contact a { color: var(--link); }
+
+    .header-photo { flex-shrink: 0; }
+    .header-photo img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
 
     /* Sections */
     .section { margin-bottom: 40px; }
@@ -104,7 +118,9 @@
 
     @media (max-width: 600px) {
       body { padding: 28px 18px 48px; font-size: 16px; }
+      .header { flex-direction: column; }
       .header h1 { font-size: 1.6em; }
+      .header-photo img { width: 120px; height: 120px; }
     }
   </style>
 </head>
@@ -112,17 +128,24 @@
 
 <!-- Header -->
 <div class="header">
-  <h1>Jiwei Tang (汤济玮)</h1>
-  <div class="role">M.Eng. Student in Computer Technology</div>
-  <div class="affiliation">
-    <strong>Tsinghua University</strong> · Department of Computer Science and Technology
+  <div>
+    <h1>Jiwei Tang (汤济玮)</h1>
+    <div class="role">M.Eng. Student in Computer Science and Technology</div>
+    <div class="affiliation">
+      <strong>Tsinghua University</strong>
+    </div>
+    <div class="contact">
+      <a href="mailto:tangjw24@mails.tsinghua.edu.cn">Email</a>
+      &nbsp;·&nbsp;
+      <a href="https://github.com/Twilightaaa" target="_blank">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://scholar.google.com/citations?user=v7oMH04AAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
+      &nbsp;·&nbsp;
+      <a href="cv.pdf" target="_blank">Curriculum Vitae</a>
+    </div>
   </div>
-  <div class="contact">
-    Email: <a href="mailto:tangjw24@mails.tsinghua.edu.cn">tangjw24@mails.tsinghua.edu.cn</a>
-    &nbsp;·&nbsp;
-    <a href="https://github.com/Twilightaaa" target="_blank">GitHub</a>
-    &nbsp;·&nbsp;
-    <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
+  <div class="header-photo">
+    <img src="photo.png" alt="Jiwei Tang" onerror="this.style.visibility='hidden'">
   </div>
 </div>
 
@@ -130,12 +153,11 @@
 <div class="section">
   <h2>About</h2>
   <p>
-    I am a Master's student in Computer Technology at <strong>Tsinghua University</strong>, advised by Prof. Wei Lv.
-    My research focuses on <strong>Natural Language Processing</strong>, <strong>Large Language Models</strong>, and <strong>Context Compression</strong>.
-    I am currently a research intern at <strong>Alibaba Group</strong>, working on foundation model training.
+    I am a Master's student in Computer Science and Technology at <strong>Tsinghua University</strong>, advised by Prof. Hai-Tao Zheng. My research lies in Natural Language Processing, with a particular focus on Large Language Models. I am currently a research intern at the
+    <a href="https://huggingface.co/inclusionAI" target="_blank">Ling Team</a> of Ant Group (Foundation Model Team), where I work on efficient agentic language models.
   </p>
   <p>
-    <strong>Research interests:</strong> NLP · Large Language Models · Context Compression · Text Compression · Information Retrieval
+    <strong>Research interests:</strong> Machine Learning · Natural Language Processing · Large Language Models
   </p>
 </div>
 
@@ -143,9 +165,9 @@
 <div class="section">
   <h2>Education</h2>
   <div class="item">
-    <div class="title">M.Eng. in Computer Technology</div>
+    <div class="title">M.Eng. in Computer Science and Technology</div>
     <div class="meta">Tsinghua University · 2024.09 – 2027.06 (expected)</div>
-    <div class="meta">School-level Second-class Scholarship</div>
+    <div class="meta">Department-level Second-class Scholarship</div>
   </div>
   <div class="item">
     <div class="title">B.Eng. in Computer Science and Technology</div>
@@ -159,24 +181,61 @@
   <h2>Publications</h2>
 
   <div class="pub">
+    <div class="title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
+    <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
+    <div class="venue">ACL 2026 (Oral, Best Paper Nomination)</div>
+    <div class="links">
+      <a href="https://arxiv.org/abs/2505.12215" target="_blank">[Paper]</a>
+      <a href="https://github.com/Twilightaaa/GMSA" target="_blank">[Code]</a>
+    </div>
+  </div>
+
+  <div class="pub">
     <div class="title">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
     <div class="venue">ICLR 2026 (Oral)</div>
-    <div class="links"><a href="#">[Paper]</a> <a href="#">[Code]</a></div>
+    <div class="links">
+      <a href="https://arxiv.org/abs/2602.01719" target="_blank">[Paper]</a>
+      <a href="https://github.com/Twilightaaa/COMI" target="_blank">[Code]</a>
+      <a href="https://x.com/FutureLab2025/status/2027214211403940199" target="_blank">[Twitter]</a>
+      <a href="https://mp.weixin.qq.com/s/cuIpJ1b2ugPD11vV72KB9w" target="_blank">[Press]</a>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
+    <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
+    <div class="venue">ACL 2026</div>
+    <div class="links">
+      <a href="https://arxiv.org/abs/2602.01840" target="_blank">[Paper]</a>
+      <a href="https://github.com/Twilightaaa/RAM" target="_blank">[Code]</a>
+      <a href="https://x.com/FutureLab2025/status/2028392997726060927" target="_blank">[Twitter]</a>
+      <a href="https://mp.weixin.qq.com/s/-vF8NVSJ406_jpiszuVdIw" target="_blank">[Press]</a>
+    </div>
   </div>
 
   <div class="pub">
     <div class="title">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
     <div class="venue">Findings of NAACL 2025</div>
-    <div class="links"><a href="#">[Paper]</a> <a href="#">[Code]</a></div>
+    <div class="links">
+      <a href="https://arxiv.org/abs/2409.19272" target="_blank">[Paper]</a>
+      <a href="https://github.com/Twilightaaa/PerceptionCompressor" target="_blank">[Code]</a>
+    </div>
+  </div>
+
+  <div class="pub">
+    <div class="title">When Hard Negatives Hurt: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
+    <div class="authors"><sup>*</sup>Zhicheng Zhang, <sup>*</sup><span class="me">Jiwei Tang</span>, et al.</div>
+    <div class="venue">KDD 2026</div>
+    <div class="links"><a href="#">[Paper]</a></div>
   </div>
 
   <div class="pub">
     <div class="title">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</div>
-    <div class="authors">Yuxin Zhao, <span class="me">Jiwei Tang</span>, et al.</div>
+    <div class="authors">Yiming Zhao, <span class="me">Jiwei Tang</span>, et al.</div>
     <div class="venue">AAAI 2026</div>
-    <div class="links"><a href="#">[Paper]</a> <a href="#">[Code]</a></div>
+    <div class="links"><a href="https://arxiv.org/abs/2511.12913" target="_blank">[Paper]</a></div>
   </div>
 
   <div class="footnote">* denotes equal contribution.</div>
@@ -187,27 +246,17 @@
   <h2>Under Review</h2>
 
   <div class="pub">
-    <div class="title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
+    <div class="title">Beyond Position Bias: Shifting Context Compression from Position-Driven to Semantic-Driven</div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">ACL 2026</div>
+    <div class="venue">NeurIPS 2026 (under review)</div>
+    <div class="links"><a href="https://arxiv.org/abs/2605.09463" target="_blank">[Paper]</a></div>
   </div>
 
   <div class="pub">
-    <div class="title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
+    <div class="title">CoS-R1: Enhancing Chain-of-Scheduling Reasoning Capability via Reinforcement Learning</div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">ACL 2026</div>
-  </div>
-
-  <div class="pub">
-    <div class="title">Data Distribution Matters: A Data-Centric Perspective on Context Compression for Large Language Models</div>
-    <div class="authors"><sup>*</sup>Zewei Lv, <sup>*</sup><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">ICML 2026</div>
-  </div>
-
-  <div class="pub">
-    <div class="title">When Hard Negatives Hurt: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
-    <div class="authors"><sup>*</sup>Qingquan Zhang, <sup>*</sup><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">KDD 2026</div>
+    <div class="venue">TMC 2026 (under review)</div>
+    <div class="links"><a href="https://arxiv.org/abs/2602.01778" target="_blank">[Paper]</a></div>
   </div>
 </div>
 
@@ -216,11 +265,19 @@
   <h2>Experience</h2>
   <div class="item">
     <div class="title">Research Intern — Alibaba Group</div>
-    <div class="meta">Future Life Lab · Foundation Model Training · 2025.07 – Present</div>
+    <div class="meta">Future Living Lab · Foundation Model Team · 2025.07 – 2026.04</div>
     <ul>
-      <li>Working on context compression for large language models at the base model team</li>
-      <li>Published first-author paper at ICLR 2026 (Oral)</li>
-      <li>Three papers under review at ACL 2026, ICML 2026, and KDD 2026</li>
+      <li>Working on context compression for large language models at the foundation model team</li>
+      <li>Published first-author papers at ICLR 2026 and ACL 2026</li>
+      <li>One paper under review at EMNLP 2026</li>
+    </ul>
+  </div>
+  <div class="item">
+    <div class="title">Research Intern — Ant Group</div>
+    <div class="meta">Post Training at <a href="https://huggingface.co/inclusionAI" target="_blank">Ling Team</a> · Foundation Model Team · 2026.04 – Present</div>
+    <ul>
+      <li>Enhancing <a href="https://huggingface.co/inclusionAI/Ling-3.0-flash" target="_blank">Ling-3.0-Flash</a>'s ability to follow complex instructions</li>
+      <li>Enhancing <a href="https://huggingface.co/inclusionAI/Ling-3.0-flash" target="_blank">Ling-3.0-Flash</a>'s Excel operation capabilities</li>
     </ul>
   </div>
 </div>
@@ -229,8 +286,8 @@
 <div class="section">
   <h2>Skills</h2>
   <ul>
-    <li><strong>Programming:</strong> Python, PyTorch, LaTeX, Linux</li>
-    <li><strong>Language:</strong> Chinese (Native), English (CET-6: 560)</li>
+    <li><strong>Programming:</strong> Python, PyTorch, LaTeX, Linux, SSH</li>
+    <li><strong>Language:</strong> Chinese (Native), English (CET-6)</li>
   </ul>
 </div>
 

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import datetime as dt
+import difflib
 import json
 import os
 import re
@@ -94,8 +95,28 @@ def citation_key(item: dict[str, Any], source: str) -> str:
     return f"{source}:{item.get('id') or item.get('paperId') or repr(item)}"
 
 
-def openalex_citations(arxiv: str) -> list[dict[str, Any]]:
-    work = get_json(f"https://api.openalex.org/works/https://arxiv.org/abs/{quote(arxiv)}", {"mailto": CONTACT})
+def openalex_citations(publication: dict[str, str]) -> list[dict[str, Any]]:
+    # OpenAlex exposes arXiv as an external identifier, but does not accept
+    # an arXiv URL in the /works/{id} endpoint. Resolve the work by title and
+    # verify the result before following its cited-by cursor.
+    candidates = get_json(
+        "https://api.openalex.org/works",
+        {"search": publication["title"], "per-page": "10", "mailto": CONTACT},
+    ).get("results", [])
+    target = normalize(publication["title"])
+    work = next((item for item in candidates if normalize(item.get("title", "")) == target), None)
+    if work is None and candidates:
+        scored = sorted(
+            candidates,
+            key=lambda item: difflib.SequenceMatcher(None, target, normalize(item.get("title", ""))).ratio(),
+            reverse=True,
+        )
+        best = scored[0]
+        similarity = difflib.SequenceMatcher(None, target, normalize(best.get("title", ""))).ratio()
+        if similarity >= 0.82:
+            work = best
+    if work is None:
+        raise RuntimeError(f"OpenAlex could not resolve publication: {publication['title']}")
     cited_by = work.get("cited_by_api_url")
     if not cited_by:
         return []
@@ -158,7 +179,7 @@ def main() -> int:
         openalex_records: list[dict[str, Any]] = []
         s2_records: list[dict[str, Any]] = []
         try:
-            openalex_records = openalex_citations(arxiv)
+            openalex_records = openalex_citations(publication)
             successful_sources += 1
         except Exception as exc:  # Keep one unavailable index from blocking all others.
             failures.append(f"OpenAlex {arxiv}: {exc}")
@@ -183,7 +204,7 @@ def main() -> int:
     # indexes are temporarily unavailable or rate-limited.
     if successful_sources == 0:
         print("No citation index responded; preserving the previous result.", file=sys.stderr)
-        return 1
+        return 0
 
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     output = {

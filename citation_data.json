@@ -1,92 +1,137 @@
 {
-  "total_citations": 168,
+  "total_citations": 169,
   "last_updated": "2026-09-27",
   "status": "ok",
   "sources": [
-    "google_scholar"
+    "google_scholar",
+    "ads",
+    "semantic_scholar"
   ],
   "source_totals": {
-    "google_scholar": 168
+    "google_scholar": 169,
+    "ads": 28,
+    "semantic_scholar": 26
   },
   "source_extras": {
-    "google_scholar": 168
+    "google_scholar": 169,
+    "ads": 14,
+    "semantic_scholar": 8
   },
-  "deduplication": "Verified Google Scholar baseline. Add SERPAPI_API_KEY to enumerate citing works and reconcile Semantic Scholar/ADS additions without double counting.",
+  "deduplication": "Google Scholar baseline; Semantic Scholar and ADS add only exact-ID or exact normalized-title/year matches not already present. OpenAlex is the fallback baseline when Google Scholar credentials are unavailable. No fuzzy matching.",
+  "google_scholar_author_url": "https://scholar.google.com/citations?user=v7oMH04AAAAJ",
+  "semantic_scholar_author_url": "https://www.semanticscholar.org/author/Jiwei-Tang/2299735305",
   "works": [
     {
       "title": "GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment",
       "arxiv": "2505.12215",
-      "deduplicated_citations": 25,
+      "deduplicated_citations": 23,
       "source_totals": {
-        "openalex": 0,
-        "semantic_scholar": 25
+        "google_scholar": 20,
+        "ads": 10
       },
       "source_extras": {
-        "openalex": 0,
-        "semantic_scholar": 25
-      }
+        "google_scholar": 20,
+        "ads": 3
+      },
+      "google_scholar_ids": [
+        "6955644668164922400"
+      ],
+      "ads_bibcode": "2025arXiv250512215T"
     },
     {
       "title": "COMI: Coarse-to-Fine Context Compression via Marginal Information Gain",
       "arxiv": "2602.01719",
-      "deduplicated_citations": 15,
+      "deduplicated_citations": 13,
       "source_totals": {
-        "openalex": 0,
-        "semantic_scholar": 15
+        "google_scholar": 10,
+        "ads": 5
       },
       "source_extras": {
-        "openalex": 0,
-        "semantic_scholar": 15
-      }
+        "google_scholar": 10,
+        "ads": 3
+      },
+      "google_scholar_ids": [
+        "16737336093736521784"
+      ],
+      "ads_bibcode": "2026arXiv260201719T"
     },
     {
       "title": "Read As Human: Compressing Context via Parallelizable Close Reading and Skimming",
       "arxiv": "2602.01840",
-      "deduplicated_citations": 0,
+      "deduplicated_citations": 11,
       "source_totals": {
-        "openalex": 0
+        "google_scholar": 8,
+        "ads": 5
       },
       "source_extras": {
-        "openalex": 0
-      }
+        "google_scholar": 8,
+        "ads": 3
+      },
+      "google_scholar_ids": [
+        "911646911763982832"
+      ],
+      "ads_bibcode": "2026arXiv260201840T"
     },
     {
       "title": "Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios",
       "arxiv": "2409.19272",
-      "deduplicated_citations": 0,
+      "deduplicated_citations": 35,
       "source_totals": {
-        "openalex": 0
+        "google_scholar": 24,
+        "semantic_scholar": 24,
+        "ads": 6
       },
       "source_extras": {
-        "openalex": 0
-      }
+        "google_scholar": 24,
+        "semantic_scholar": 8,
+        "ads": 3
+      },
+      "google_scholar_ids": [
+        "1989052892225044585"
+      ],
+      "ads_bibcode": "2024arXiv240919272T"
     },
     {
       "title": "CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling",
       "arxiv": "2511.12913",
-      "deduplicated_citations": 0,
+      "deduplicated_citations": 8,
       "source_totals": {
-        "openalex": 0
+        "google_scholar": 6,
+        "ads": 2
       },
       "source_extras": {
-        "openalex": 0
-      }
+        "google_scholar": 6,
+        "ads": 2
+      },
+      "google_scholar_ids": [
+        "1285504479505551404"
+      ],
+      "ads_bibcode": "2025arXiv251112913Z"
     },
     {
       "title": "Beyond Position Bias: Shifting Context Compression from Position-Driven to Semantic-Driven",
       "arxiv": "2605.09463",
       "deduplicated_citations": 2,
       "source_totals": {
-        "openalex": 0,
-        "semantic_scholar": 2
+        "google_scholar": 2,
+        "semantic_scholar": 2,
+        "ads": 0
       },
       "source_extras": {
-        "openalex": 0,
-        "semantic_scholar": 2
-      }
+        "google_scholar": 2,
+        "semantic_scholar": 0,
+        "ads": 0
+      },
+      "google_scholar_ids": [
+        "3406256798894402592"
+      ],
+      "ads_bibcode": "2026arXiv260509463T"
     }
   ],
   "warnings": [
-    "Google Scholar baseline is manually supplied as 168 until SERPAPI_API_KEY is configured."
+    "Semantic Scholar 2505.12215: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2505.12215?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
+    "Semantic Scholar 2602.01719: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2602.01719?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
+    "Semantic Scholar 2602.01840: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2602.01840?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
+    "Semantic Scholar 2511.12913: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2511.12913?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: "
   ]
 }

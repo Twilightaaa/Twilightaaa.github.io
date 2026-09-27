@@ -33,10 +33,13 @@ CONTACT = "tangjw24@mails.tsinghua.edu.cn"
 SERPAPI_KEY = os.environ.get("SERPAPI_API_KEY", "").strip()
 ADS_TOKEN = os.environ.get("ADS_API_TOKEN", "").strip()
 S2_KEY = os.environ.get("SEMANTIC_SCHOLAR_API_KEY", "").strip()
+SCHOLAR_AUTHOR_ID = "v7oMH04AAAAJ"
+SEMANTIC_SCHOLAR_AUTHOR_ID = "2299735305"
+SEMANTIC_SCHOLAR_AUTHOR_URL = "https://www.semanticscholar.org/author/Jiwei-Tang/2299735305"
 try:
-    MANUAL_SCHOLAR_BASELINE = int(os.environ.get("GOOGLE_SCHOLAR_BASELINE", "168"))
+    MANUAL_SCHOLAR_BASELINE = int(os.environ.get("GOOGLE_SCHOLAR_BASELINE", "169"))
 except ValueError:
-    MANUAL_SCHOLAR_BASELINE = 168
+    MANUAL_SCHOLAR_BASELINE = 169
 
 PUBLICATIONS = [
     {"title": "GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment", "arxiv": "2505.12215"},
@@ -69,7 +72,8 @@ def get_json(
                 return json.load(response)
         except (HTTPError, URLError, TimeoutError) as exc:
             if attempt == retries - 1:
-                raise RuntimeError(f"request failed: {url}: {exc}") from exc
+                safe_url = re.sub(r"([?&]api_key=)[^&]+", r"\1<redacted>", url)
+                raise RuntimeError(f"request failed: {safe_url}: {exc}") from exc
             time.sleep(2**attempt)
     raise AssertionError("unreachable")
 
@@ -282,6 +286,23 @@ def serpapi_citations(publication: dict[str, str]) -> tuple[list[dict[str, Any]]
     return records, cites_ids
 
 
+def serpapi_author_total() -> int:
+    if not SERPAPI_KEY:
+        raise RuntimeError("SERPAPI_API_KEY is not configured")
+    profile = get_json(
+        "https://serpapi.com/search.json",
+        {"engine": "google_scholar_author", "author_id": SCHOLAR_AUTHOR_ID, "hl": "en", "api_key": SERPAPI_KEY},
+    )
+    rows = ((profile.get("cited_by") or {}).get("table") or [])
+    for row in rows:
+        for key, value in row.items():
+            if key.lower() in {"citations", "cited_by"} and isinstance(value, dict):
+                count = value.get("all") or value.get("value")
+                if isinstance(count, int):
+                    return count
+    raise RuntimeError("Google Scholar author profile has no total citation count")
+
+
 def semanticscholar_citations(arxiv: str) -> list[dict[str, Any]]:
     headers = {"Accept": "application/json"}
     if S2_KEY:
@@ -369,8 +390,10 @@ def write_manual_baseline() -> int:
         "source_totals": {"google_scholar": MANUAL_SCHOLAR_BASELINE},
         "source_extras": {"google_scholar": MANUAL_SCHOLAR_BASELINE},
         "deduplication": "Verified Google Scholar baseline. Add SERPAPI_API_KEY to enumerate citing works and reconcile Semantic Scholar/ADS additions without double counting.",
+        "google_scholar_author_url": f"https://scholar.google.com/citations?user={SCHOLAR_AUTHOR_ID}",
+        "semantic_scholar_author_url": SEMANTIC_SCHOLAR_AUTHOR_URL,
         "works": previous.get("works", []),
-        "warnings": ["Google Scholar baseline is manually supplied as 168 until SERPAPI_API_KEY is configured."],
+        "warnings": [f"Google Scholar baseline is manually supplied as {MANUAL_SCHOLAR_BASELINE} until SERPAPI_API_KEY is configured."],
     }
     OUTPUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n")
     print(f"Wrote verified Google Scholar baseline of {MANUAL_SCHOLAR_BASELINE} citations to {OUTPUT}")
@@ -387,6 +410,11 @@ def main() -> int:
     work_summaries: list[dict[str, Any]] = []
     warnings: list[str] = []
     successful_sources = 0
+    author_total: int | None = None
+    try:
+        author_total = serpapi_author_total()
+    except Exception as exc:
+        warnings.append(f"Google Scholar author profile: {exc}")
 
     for publication in PUBLICATIONS:
         source_records, metadata, paper_warnings = collect_for_publication(publication)
@@ -404,6 +432,13 @@ def main() -> int:
         print("No citation index responded; preserving the previous result.", file=sys.stderr)
         return 0
 
+    # The author profile is the authoritative coverage baseline. Per-paper
+    # citation searches are retained as evidence but may omit works or versions.
+    if author_total is not None:
+        total_citations = max(total_citations, author_total, MANUAL_SCHOLAR_BASELINE)
+        aggregate_totals["google_scholar"] = max(aggregate_totals.get("google_scholar", 0), total_citations)
+        aggregate_extras["google_scholar"] = aggregate_totals["google_scholar"]
+
     output: dict[str, Any] = {
         "total_citations": total_citations,
         "last_updated": dt.datetime.now(dt.timezone.utc).date().isoformat(),
@@ -412,6 +447,8 @@ def main() -> int:
         "source_totals": aggregate_totals,
         "source_extras": aggregate_extras,
         "deduplication": "Google Scholar baseline; Semantic Scholar and ADS add only exact-ID or exact normalized-title/year matches not already present. OpenAlex is the fallback baseline when Google Scholar credentials are unavailable. No fuzzy matching.",
+        "google_scholar_author_url": f"https://scholar.google.com/citations?user={SCHOLAR_AUTHOR_ID}",
+        "semantic_scholar_author_url": SEMANTIC_SCHOLAR_AUTHOR_URL,
         "works": work_summaries,
     }
     if warnings:

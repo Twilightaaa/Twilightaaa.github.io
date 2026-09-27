@@ -108,10 +108,6 @@
 
     .footnote { font-size: 0.85em; color: var(--muted); font-style: italic; margin-top: 6px; }
 
-    .citation-summary { color: var(--muted); font-size: 0.95em; }
-    .citation-summary strong { color: var(--text); }
-    .citation-source { font-size: 0.9em; }
-
     /* Education / Experience */
     .item { margin-bottom: 20px; }
 
@@ -195,9 +191,6 @@
   </p>
   <p>
     <strong>Research interests:</strong> Machine Learning · Natural Language Processing
-  </p>
-  <p class="citation-summary">
-    My work has received <span id="citation-count">169</span> citations across major scholarly indexes after deduplication (last updated <time id="citation-date">—</time>).
   </p>
 </div>
 
@@ -352,24 +345,5 @@
   <p>&copy; 2026 Jiwei Tang · Last updated: September 2026</p>
 </div>
 
-<script>
-  (async () => {
-    const count = document.getElementById('citation-count');
-    const date = document.getElementById('citation-date');
-    try {
-      const response = await fetch('citation_data.json', { cache: 'no-store' });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-      if (Number.isFinite(data.total_citations)) {
-        count.textContent = data.total_citations.toLocaleString('en-US');
-      } else if (data.status === 'pending') {
-        count.textContent = 'updating';
-      }
-      if (data.last_updated) date.textContent = data.last_updated;
-    } catch (error) {
-      count.textContent = 'updating';
-    }
-  })();
-</script>
 </body>
 </html>

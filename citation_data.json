@@ -3,21 +3,15 @@
   "last_updated": "2026-09-27",
   "status": "ok",
   "sources": [
-    "google_scholar",
-    "ads",
-    "semantic_scholar"
+    "google_scholar"
   ],
   "source_totals": {
-    "google_scholar": 169,
-    "ads": 28,
-    "semantic_scholar": 26
+    "google_scholar": 169
   },
   "source_extras": {
-    "google_scholar": 169,
-    "ads": 14,
-    "semantic_scholar": 8
+    "google_scholar": 169
   },
-  "deduplication": "Google Scholar baseline; Semantic Scholar and ADS add only exact-ID or exact normalized-title/year matches not already present. OpenAlex is the fallback baseline when Google Scholar credentials are unavailable. No fuzzy matching.",
+  "deduplication": "Verified Google Scholar baseline. Add SERPAPI_API_KEY to enumerate citing works and reconcile Semantic Scholar/ADS additions without double counting.",
   "google_scholar_author_url": "https://scholar.google.com/citations?user=v7oMH04AAAAJ",
   "semantic_scholar_author_url": "https://www.semanticscholar.org/author/Jiwei-Tang/2299735305",
   "works": [
@@ -129,9 +123,6 @@
     }
   ],
   "warnings": [
-    "Semantic Scholar 2505.12215: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2505.12215?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
-    "Semantic Scholar 2602.01719: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2602.01719?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
-    "Semantic Scholar 2602.01840: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2602.01840?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
-    "Semantic Scholar 2511.12913: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2511.12913?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: "
+    "Google Scholar baseline is manually supplied as 169 until SERPAPI_API_KEY is configured."
   ]
 }

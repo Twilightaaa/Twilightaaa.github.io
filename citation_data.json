@@ -1,0 +1,10 @@
+{
+  "total_citations": null,
+  "last_updated": null,
+  "status": "pending",
+  "sources": [
+    "OpenAlex",
+    "Semantic Scholar"
+  ],
+  "deduplication": "Union of citing works matched by DOI, arXiv, PubMed, or normalized title and publication year."
+}

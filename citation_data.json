@@ -6,7 +6,9 @@
     "OpenAlex",
     "Semantic Scholar"
   ],
-  "deduplication": "Union of citing works matched by DOI, arXiv, PubMed, or normalized title and publication year.",
+  "source_totals": {},
+  "source_extras": {},
+  "deduplication": "Google Scholar baseline; Semantic Scholar and ADS add only exact-ID or exact normalized-title/year matches not already present. OpenAlex is the fallback baseline when Google Scholar credentials are unavailable. No fuzzy matching.",
   "works": [
     {
       "title": "GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment",

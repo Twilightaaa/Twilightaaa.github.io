@@ -199,7 +199,7 @@
   <p class="citation-summary">
     <strong>Total citations:</strong>
     <span id="citation-count">updating</span>
-    <span class="citation-source">(deduplicated across OpenAlex and Semantic Scholar; last updated <time id="citation-date">—</time>)</span>
+    <span id="citation-breakdown" class="citation-source">(deduplicated index aggregate; last updated <time id="citation-date">—</time>)</span>
   </p>
 </div>
 
@@ -357,6 +357,7 @@
 <script>
   (async () => {
     const count = document.getElementById('citation-count');
+    const breakdown = document.getElementById('citation-breakdown');
     const date = document.getElementById('citation-date');
     try {
       const response = await fetch('citation_data.json', { cache: 'no-store' });
@@ -367,6 +368,20 @@
       } else if (data.status === 'pending') {
         count.textContent = 'updating';
       }
+      const labels = {
+        google_scholar: 'Google Scholar',
+        semantic_scholar: 'Semantic Scholar extra',
+        ads: 'ADS extra',
+        openalex: 'OpenAlex fallback',
+      };
+      const totals = data.source_totals || {};
+      const extras = data.source_extras || {};
+      const parts = Object.keys(totals).map((source) => {
+        const label = labels[source] || source;
+        const value = source === 'google_scholar' || source === 'openalex' ? totals[source] : (extras[source] ?? totals[source]);
+        return `${label}: ${Number(value).toLocaleString('en-US')}`;
+      });
+      if (parts.length) breakdown.firstChild.textContent = `(${parts.join('; ')}; deduplicated; last updated `;
       if (data.last_updated) date.textContent = data.last_updated;
     } catch (error) {
       count.textContent = 'updating';

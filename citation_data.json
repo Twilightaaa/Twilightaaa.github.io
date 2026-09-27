@@ -1,10 +1,48 @@
 {
-  "total_citations": null,
-  "last_updated": null,
-  "status": "pending",
+  "total_citations": 15,
+  "last_updated": "2026-09-27",
+  "status": "ok",
   "sources": [
     "OpenAlex",
     "Semantic Scholar"
   ],
-  "deduplication": "Union of citing works matched by DOI, arXiv, PubMed, or normalized title and publication year."
+  "deduplication": "Union of citing works matched by DOI, arXiv, PubMed, or normalized title and publication year.",
+  "works": [
+    {
+      "title": "GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment",
+      "arxiv": "2505.12215",
+      "deduplicated_citations": 0
+    },
+    {
+      "title": "COMI: Coarse-to-Fine Context Compression via Marginal Information Gain",
+      "arxiv": "2602.01719",
+      "deduplicated_citations": 15
+    },
+    {
+      "title": "Read As Human: Compressing Context via Parallelizable Close Reading and Skimming",
+      "arxiv": "2602.01840",
+      "deduplicated_citations": 0
+    },
+    {
+      "title": "Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios",
+      "arxiv": "2409.19272",
+      "deduplicated_citations": 0
+    },
+    {
+      "title": "CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling",
+      "arxiv": "2511.12913",
+      "deduplicated_citations": 0
+    },
+    {
+      "title": "Beyond Position Bias: Shifting Context Compression from Position-Driven to Semantic-Driven",
+      "arxiv": "2605.09463",
+      "deduplicated_citations": 2
+    }
+  ],
+  "warnings": [
+    "Semantic Scholar 2505.12215: HTTP Error 429: ",
+    "Semantic Scholar 2602.01840: HTTP Error 429: ",
+    "Semantic Scholar 2409.19272: HTTP Error 429: ",
+    "Semantic Scholar 2511.12913: HTTP Error 429: "
+  ]
 }

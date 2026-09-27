@@ -1,20 +1,17 @@
 {
-  "total_citations": 42,
+  "total_citations": 168,
   "last_updated": "2026-09-27",
   "status": "ok",
   "sources": [
-    "openalex",
-    "semantic_scholar"
+    "google_scholar"
   ],
   "source_totals": {
-    "openalex": 0,
-    "semantic_scholar": 42
+    "google_scholar": 168
   },
   "source_extras": {
-    "openalex": 0,
-    "semantic_scholar": 42
+    "google_scholar": 168
   },
-  "deduplication": "Google Scholar baseline; Semantic Scholar and ADS add only exact-ID or exact normalized-title/year matches not already present. OpenAlex is the fallback baseline when Google Scholar credentials are unavailable. No fuzzy matching.",
+  "deduplication": "Verified Google Scholar baseline. Add SERPAPI_API_KEY to enumerate citing works and reconcile Semantic Scholar/ADS additions without double counting.",
   "works": [
     {
       "title": "GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment",
@@ -90,8 +87,6 @@
     }
   ],
   "warnings": [
-    "Semantic Scholar 2602.01840: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2602.01840?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
-    "Semantic Scholar 2409.19272: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2409.19272?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: ",
-    "Semantic Scholar 2511.12913: request failed: https://api.semanticscholar.org/graph/v1/paper/ARXIV:2511.12913?fields=paperId%2Ctitle%2Cyear%2CexternalIds%2Curl: HTTP Error 429: "
+    "Google Scholar baseline is manually supplied as 168 until SERPAPI_API_KEY is configured."
   ]
 }

@@ -206,7 +206,6 @@
     <a href="https://huggingface.co/meituan-longcat" target="_blank">LongCat Team</a> of Meituan, where I study how agents can reliably complete long-horizon tasks in complex systems. I am also a contributor to
     <a href="https://huggingface.co/inclusionAI/Ling-3.0-flash" target="_blank">Ling-3.0-flash</a> and
     <a href="https://huggingface.co/inclusionAI/Ling-3.1-flash" target="_blank">Ling-3.1-flash</a> at Ant Group, whose official model cards have received
-    <span id="ling-likes">500+</span> likes and
     <span id="ling-downloads">15,000+</span> monthly downloads on Hugging Face.
   </p>
   <p>
@@ -311,7 +310,7 @@
     <div class="meta">Post Training at <a href="https://huggingface.co/inclusionAI" target="_blank">Ling Team</a> · Foundation Model Team · 2026.04 – 2026.09</div>
     <div class="meta">Mentor: <a href="https://scholar.google.com/citations?user=EwqULbUAAAAJ&hl=zh-CN" target="_blank">Junjie Ou</a></div>
     <ul>
-      <li>Contributing to <a href="https://huggingface.co/inclusionAI/Ling-3.0-flash" target="_blank">Ling-3.0-Flash</a> and <a href="https://huggingface.co/inclusionAI/Ling-3.1-flash" target="_blank">Ling-3.1-Flash</a>, Ant Group's open-source hybrid-linear MoE models (124B and 560B total parameters, 1M-token context)</li>
+      <li>Contributing to <a href="https://huggingface.co/inclusionAI/Ling-3.0-flash" target="_blank">Ling-3.0-Flash</a> and <a href="https://huggingface.co/inclusionAI/Ling-3.1-flash" target="_blank">Ling-3.1-Flash</a> (124B and 560B total parameters, 1M-token context)</li>
       <li>Enhancing complex instruction-following and Excel operation capabilities in Ling-3.0-Flash and Ling-3.1-Flash</li>
     </ul>
   </div>
@@ -320,8 +319,8 @@
     <div class="meta">Token Foundry · 2025.07 – 2026.04</div>
     <div class="meta">Mentor: <a href="https://scholar.google.com/citations?user=IPXCDMMAAAAJ&hl=zh-CN" target="_blank">Shilei Liu</a></div>
     <ul>
-      <li>Investigating information redundancy in context compression, leading to COMI (ICLR 2026)</li>
-      <li>Studying close-reading and skimming mechanisms, leading to RAM (ACL 2026)</li>
+      <li>Investigating information redundancy in context compression, resulting in COMI (ICLR 2026)</li>
+      <li>Studying close-reading and skimming mechanisms, resulting in RAM (ACL 2026)</li>
     </ul>
   </div>
 </div>
@@ -385,26 +384,23 @@
       "inclusionAI/Ling-3.0-flash",
       "inclusionAI/Ling-3.1-flash"
     ];
-    var likesEl = document.getElementById("ling-likes");
     var dlEl = document.getElementById("ling-downloads");
-    if (!likesEl || !dlEl || !window.fetch) return;
+    if (!dlEl || !window.fetch) return;
 
     Promise.all(models.map(function (m) {
       return fetch("https://huggingface.co/api/models/" + m, { cache: "no-store" })
         .then(function (r) { return r.ok ? r.json() : null; })
         .catch(function () { return null; });
     })).then(function (list) {
-      var likes = 0, downloads = 0;
+      var downloads = 0;
       for (var i = 0; i < list.length; i++) {
         if (!list[i]) return; // keep static fallback when any card fails
-        likes += list[i].likes || 0;
         downloads += list[i].downloads || 0;
       }
       var roundDown = function (v) {
         var step = v >= 10000 ? 1000 : 100;
         return Math.floor(v / step) * step;
       };
-      likesEl.textContent = roundDown(likes).toLocaleString("en-US") + "+";
       dlEl.textContent = roundDown(downloads).toLocaleString("en-US") + "+";
     });
   })();

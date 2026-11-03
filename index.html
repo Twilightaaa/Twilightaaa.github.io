@@ -14,18 +14,17 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { background: #eeeeee; }
+
     body {
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--text);
-      background-color: #f8f7f4;
-      background-image:
-        linear-gradient(rgba(0, 0, 0, .055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 0, 0, .055) 1px, transparent 1px);
-      background-size: 28px 28px;
+      background-color: #fff;
       line-height: 1.75;
-      max-width: 920px;
-      margin: 0 auto;
-      padding: 48px 28px 64px;
+      width: calc(100% - 48px);
+      max-width: 1060px;
+      margin: 30px auto;
+      padding: 48px 66px 64px;
       font-size: 17px;
     }
 
@@ -70,7 +69,7 @@
     .contact { font-size: 0.95em; color: var(--muted); }
     .contact a { color: var(--link); }
 
-    .header-photo { flex-shrink: 0; }
+    .header-photo { flex-shrink: 0; margin: 24px 32px 0 0; }
     .header-photo img {
       width: 180px;
       height: 180px;
@@ -163,9 +162,10 @@
     }
 
     @media (max-width: 600px) {
-      body { padding: 28px 18px 48px; font-size: 16px; }
+      body { width: calc(100% - 24px); margin: 12px auto; padding: 28px 18px 48px; font-size: 16px; }
       .header { flex-direction: column; }
       .header h1 { font-size: 1.6em; }
+      .header-photo { margin: 0; }
       .header-photo img { width: 150px; height: 150px; }
     }
   </style>

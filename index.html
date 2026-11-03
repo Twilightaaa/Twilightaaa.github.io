@@ -93,20 +93,29 @@
 
     .section p { margin-bottom: 12px; }
 
-    /* Publications */
-    .pub { margin-bottom: 22px; }
+    /* Publications: compact academic list */
+    .publication-list {
+      list-style-type: square;
+      padding-left: 24px;
+      margin: 0;
+    }
 
-    .pub .title { font-weight: 600; }
+    .publication-list .pub {
+      margin-bottom: 18px;
+      padding-left: 2px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
 
-    .pub .authors { color: var(--muted); }
-    .pub .authors .me { color: var(--text); font-weight: 600; }
+    .pub .title { font-weight: 400; }
+    .pub .title a { color: var(--link); }
+    .pub .authors { color: var(--text); }
+    .pub .authors .me { font-weight: 700; text-decoration: underline; }
+    .pub .venue { color: var(--text); }
+    .pub .distinction { color: #b42318; font-weight: 700; }
+    .pub .links a { display: inline-block; margin-right: 5px; }
 
-    .pub .venue { font-style: italic; color: var(--muted); margin-top: 2px; }
-
-    .pub .links { margin-top: 4px; }
-    .pub .links a { font-size: 0.9em; margin-right: 14px; }
-
-    .footnote { font-size: 0.85em; color: var(--muted); font-style: italic; margin-top: 6px; }
+    .footnote { font-size: 0.9em; color: var(--muted); margin-bottom: 12px; }
 
     /* Education / Experience */
     .item { margin-bottom: 20px; }
@@ -214,86 +223,90 @@
 </div>
 
 <!-- Publications -->
-<div class="section">
+<div class="section" id="publications">
   <h2>Publications</h2>
+  <div class="footnote">* denotes equal contribution.</div>
+  <ul class="publication-list">
 
-  <div class="pub">
-    <div class="title">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</div>
+    <li class="pub">
+    <div class="title"><a href="https://arxiv.org/abs/2505.12215" target="_blank" rel="noopener noreferrer">GMSA: Enhancing Context Compression via Group Merging and Layer Semantic Alignment</a> <span class="distinction">(Oral, Best Paper Nomination)</span></div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">ACL 2026 (Oral, Best Paper Nomination)</div>
+    <div class="venue"><strong>ACL</strong> 2026</div>
     <div class="links">
-      <a href="https://arxiv.org/abs/2505.12215" target="_blank">[Paper]</a>
-      <a href="https://github.com/Twilightaaa/GMSA" target="_blank">[Code]</a>
+      <a href="https://arxiv.org/abs/2505.12215" target="_blank">[paper]</a>
+      <a href="https://github.com/Twilightaaa/GMSA" target="_blank">[code]</a>
     </div>
-  </div>
+    </li>
 
-  <div class="pub">
-    <div class="title">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</div>
+    <li class="pub">
+    <div class="title"><a href="https://arxiv.org/abs/2602.01719" target="_blank" rel="noopener noreferrer">COMI: Coarse-to-Fine Context Compression via Marginal Information Gain</a></div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">ICLR 2026</div>
+    <div class="venue"><strong>ICLR</strong> 2026</div>
     <div class="links">
-      <a href="https://arxiv.org/abs/2602.01719" target="_blank">[Paper]</a>
-      <a href="https://github.com/Twilightaaa/COMI" target="_blank">[Code]</a>
-      <a href="https://x.com/FutureLab2025/status/2027214211403940199" target="_blank">[Twitter]</a>
-      <a href="https://mp.weixin.qq.com/s/cuIpJ1b2ugPD11vV72KB9w" target="_blank">[Press]</a>
+      <a href="https://arxiv.org/abs/2602.01719" target="_blank">[paper]</a>
+      <a href="https://github.com/Twilightaaa/COMI" target="_blank">[code]</a>
+      <a href="https://x.com/FutureLab2025/status/2027214211403940199" target="_blank">[twitter]</a>
+      <a href="https://mp.weixin.qq.com/s/cuIpJ1b2ugPD11vV72KB9w" target="_blank">[press]</a>
     </div>
-  </div>
+    </li>
 
-  <div class="pub">
-    <div class="title">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</div>
+    <li class="pub">
+    <div class="title"><a href="https://arxiv.org/abs/2602.01840" target="_blank" rel="noopener noreferrer">Read As Human: Compressing Context via Parallelizable Close Reading and Skimming</a></div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">ACL 2026</div>
+    <div class="venue"><strong>ACL</strong> 2026</div>
     <div class="links">
-      <a href="https://arxiv.org/abs/2602.01840" target="_blank">[Paper]</a>
-      <a href="https://github.com/Twilightaaa/RAM" target="_blank">[Code]</a>
-      <a href="https://x.com/FutureLab2025/status/2028392997726060927" target="_blank">[Twitter]</a>
-      <a href="https://mp.weixin.qq.com/s/-vF8NVSJ406_jpiszuVdIw" target="_blank">[Press]</a>
+      <a href="https://arxiv.org/abs/2602.01840" target="_blank">[paper]</a>
+      <a href="https://github.com/Twilightaaa/RAM" target="_blank">[code]</a>
+      <a href="https://x.com/FutureLab2025/status/2028392997726060927" target="_blank">[twitter]</a>
+      <a href="https://mp.weixin.qq.com/s/-vF8NVSJ406_jpiszuVdIw" target="_blank">[press]</a>
     </div>
-  </div>
+    </li>
 
-  <div class="pub">
-    <div class="title">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</div>
+    <li class="pub">
+    <div class="title"><a href="https://arxiv.org/abs/2409.19272" target="_blank" rel="noopener noreferrer">Perception Compressor: A Training-Free Prompt Compression Framework in Long Context Scenarios</a></div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">Findings of NAACL 2025</div>
+    <div class="venue">Findings of <strong>NAACL</strong> 2025</div>
     <div class="links">
-      <a href="https://arxiv.org/abs/2409.19272" target="_blank">[Paper]</a>
-      <a href="https://github.com/Twilightaaa/PerceptionCompressor" target="_blank">[Code]</a>
+      <a href="https://arxiv.org/abs/2409.19272" target="_blank">[paper]</a>
+      <a href="https://github.com/Twilightaaa/PerceptionCompressor" target="_blank">[code]</a>
     </div>
-  </div>
+    </li>
 
-  <div class="pub">
+    <li class="pub">
     <div class="title"><em>When Hard Negatives Hurt</em>: Bridging the Generative-Discriminative Gap in Hard Negative Synthesis</div>
     <div class="authors"><sup>*</sup>Zhicheng Zhang, <sup>*</sup><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">KDD 2026</div>
-    <div class="links"><a href="#">[Paper]</a></div>
-  </div>
+    <div class="venue"><strong>KDD</strong> 2026</div>
+    <div class="links"><a href="#">[paper]</a></div>
+    </li>
 
-  <div class="pub">
-    <div class="title">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</div>
+    <li class="pub">
+    <div class="title"><a href="https://arxiv.org/abs/2511.12913" target="_blank" rel="noopener noreferrer">CoS: Towards Optimal Event Scheduling via Chain-of-Scheduling</a></div>
     <div class="authors">Yiming Zhao, <span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">AAAI 2026</div>
-    <div class="links"><a href="https://arxiv.org/abs/2511.12913" target="_blank">[Paper]</a></div>
-  </div>
+    <div class="venue"><strong>AAAI</strong> 2026</div>
+    <div class="links"><a href="https://arxiv.org/abs/2511.12913" target="_blank">[paper]</a></div>
+    </li>
 
-  <div class="footnote">* denotes equal contribution.</div>
+  </ul>
 </div>
 
 <!-- Under Review -->
 <div class="section">
   <h2>Under Review</h2>
+  <ul class="publication-list">
 
-  <div class="pub">
-    <div class="title">Beyond Position Bias: Shifting Context Compression from Position-Driven to Semantic-Driven</div>
+    <li class="pub">
+    <div class="title"><a href="https://arxiv.org/abs/2605.09463" target="_blank" rel="noopener noreferrer">Beyond Position Bias: Shifting Context Compression from Position-Driven to Semantic-Driven</a></div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">NeurIPS 2026 (under review)</div>
-    <div class="links"><a href="https://arxiv.org/abs/2605.09463" target="_blank">[Paper]</a></div>
-  </div>
+    <div class="venue"><strong>NeurIPS</strong> 2026 (under review)</div>
+    <div class="links"><a href="https://arxiv.org/abs/2605.09463" target="_blank">[paper]</a></div>
+    </li>
 
-  <div class="pub">
+    <li class="pub">
     <div class="title">CoS-R1: Enhancing Chain-of-Scheduling Reasoning Capability via Reinforcement Learning</div>
     <div class="authors"><span class="me">Jiwei Tang</span>, et al.</div>
-    <div class="venue">TMC 2026 (under review)</div>
-  </div>
+    <div class="venue"><strong>TMC</strong> 2026 (under review)</div>
+    </li>
+  </ul>
 </div>
 
 <!-- Experience -->
